@@ -1,4 +1,4 @@
-# MongoDB — Ejemplos Prácticos · Clase 8
+# MongoDB — Ejemplos Prácticos · Clase 7
 
 > **Escenario de ejemplo:** Tienda Online (`tienda`)  
 > Colecciones: `clientes`, `productos`, `pedidos`, `categorias`

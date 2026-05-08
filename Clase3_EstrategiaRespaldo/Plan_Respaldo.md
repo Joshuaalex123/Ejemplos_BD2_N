@@ -107,7 +107,7 @@ Plantea un plan de respaldo para una base de datos con:
 - Tamano: 120 GB
 - Crecimiento diario: 2 GB
 - Ventana de mantenimiento: 1 hora diaria
-- RPO: 4 horas
-- RTO: 2 horas
+- RPO (Recovery Point Objective): 4 horas
+- RTO (Recovery Time Objective): 2 horas
 
 
