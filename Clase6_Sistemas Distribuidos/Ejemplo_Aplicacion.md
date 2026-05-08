@@ -9,12 +9,6 @@
 - Conectar consenso con commits distribuidos
 - Relacionar casos de uso con el modelo de consistencia
 
-## Formato en clase
-- El docente presenta el flujo en pantalla o pizarra
-- Se muestran fragmentos de pseudo-salida y tablas simples
-- Cada actividad concluye con 2-3 preguntas de discusion
-
-
 ## Actividad 1: replicacion primaria-secundaria
 **Meta**: entender el rol del lider y el retraso de replicas.
 
@@ -75,6 +69,10 @@ necesidad de orden total y estrategia de recuperacion ante fallas.
 - Donde ocurre el punto unico de fallo?
 - Que riesgo hay si leemos desde una replica atrasada?
 
+### Respuestas sugeridas
+- El punto unico de fallo es la primaria (lider); si cae, no hay escrituras hasta failover.
+- Leer una replica atrasada puede devolver datos obsoletos y llevar a decisiones incorrectas.
+
 
 
 ## Actividad 2: consistencia de lectura
@@ -120,6 +118,10 @@ segun el contexto de negocio.
 **Preguntas de discusion**
 - Que preferirias para saldo bancario?
 - Que preferirias para feed de noticias?
+
+### Respuestas 
+- Saldo bancario: consistencia fuerte (leer en primaria o con quorum).
+- Feed de noticias: consistencia eventual (prioriza latencia y disponibilidad).
 
 
 
@@ -174,6 +176,10 @@ Por eso, la shard key y los patrones de consulta deben definirse en conjunto.
 - Que pasa si un shard se sobrecarga?
 - Como afecta el sharding a joins grandes?
 
+### Respuestas 
+- Un shard sobrecargado se vuelve hotspot, aumenta la latencia y degrada el sistema; requiere rebalanceo o re-sharding.
+- Los joins grandes se vuelven costosos por fan-out y agregacion entre shards, y a veces son inviables.
+
 
 
 ## Actividad 4: consenso y commit distribuido
@@ -219,6 +225,10 @@ aceptar estados inconsistentes.
 - Por que la mayoria es critica?
 - Que ocurre si hay particion de red?
 
+### Respuestas 
+- La mayoria evita dos verdades simultaneas y asegura un orden unico de commits.
+- Con particion de red, el lado sin quorum suele detener commits para priorizar coherencia.
+
 
 ## Cierre y conexion con casos de uso
 Relaciona el caso con el modelo de consistencia deseado:
@@ -227,11 +237,11 @@ Relaciona el caso con el modelo de consistencia deseado:
 - Inventario en tiempo real (fuerte o casi fuerte)
 - Feed de redes sociales (eventual)
 - Logs de analitica masiva (eventual)
+
 Esta lista se utiliza como ejercicio de clasificacion y justificacion del
 costo del error frente a latencia y disponibilidad.
 
-Opcional: pide que justifiquen disponibilidad, latencia y costo.
-La discusion permite conectar decisiones tecnicas con impacto operativo.
+
 
 ### Explicacion
 En la conexion con casos de uso, las transferencias bancarias requieren
